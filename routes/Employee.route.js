@@ -19,8 +19,10 @@ employeeRouter.post("/", async (req, res) => {
 
 
 employeeRouter.get("/", async (req, res) => {
+    console.log(req.query);
+
     try {
-        const employees = await EmployeeModel.find();
+        const employees = await EmployeeModel.find(req.query);
         // console.log(employees);
 
         res.status(200).send({"employees": employees});
